@@ -104,9 +104,9 @@ const data = [
   </div>
 */
 
-function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParagraph }){
+function articleMaker(obj){
     const div = document.createElement('div');
-    const title = document.createElement('h2');
+    const h2 = document.createElement('h2');
     const p1 = document.createElement('p1');
     const p2 = document.createElement('p2');
     const p3 = document.createElement('p3');
@@ -114,23 +114,30 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
     const button = document.createElement('span');
     const expandButton = document.createElement('.expandButton');
 
-    div.appendChild(title);
-    div.appendChild(date);
+    div.appendChild(h2);
     div.appendChild(p1);
     div.appendChild(p2);
     div.appendChild(p3);
     div.appendChild(p4);
 
     div.classList.add('header');
-    div.classList.add('title');
-    div.classList.add('p1');
+    p1.classList.add('date');
+    button.classList.add('expandButton');
+    div.classList.add('close');
+
+    h2.textContent = obj.title;
+    p1.textContent = obj.date;
+    p2.textContent = obj.firstParagraph;
+    p3.textContent = obj.secondParagraph;
+    p4.textContent = obj.thirdParagraph;
+    span.textContent = '+';
 
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 */
 
-  expandButton.addEventListener('click', event => {
+  button.addEventListener('click', event => {
       expandButton.classList.toggle('article-open');
   })
 
@@ -138,7 +145,7 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   Step 3: Don't forget to return something from your function!
 */
 
-  return articles;
+  return div;
 }
 
 /*
@@ -146,8 +153,19 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 */
 
-const articleElements = data.forEach(articles => {
-  articles.appendChild(articles);
+const articleElements = data.map(div => {
+  return articleMaker(data);
+})
+// const panelElements = panelData.map(panelData => {
+//   return makePanel(panelData)
+// })
+
+// panelElements.forEach(panelElement => {
+//   accordion.appendChild(panelElement)
+// })
+const articleWrapper = document.querySelector('.articles');
+articleElements = data.forEach(div => {
+  articleWrapper.appendChild(div);
 })
 
 /*
@@ -155,4 +173,4 @@ const articleElements = data.forEach(articles => {
   Refresh the page to see the new article.
 */
 
-
+// const newArticle.map()

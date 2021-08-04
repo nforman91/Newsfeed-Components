@@ -1,72 +1,76 @@
-// This is the data we will be using, study it but don't change anything, yet.
+// // This is the data we will be using, study it but don't change anything, yet.
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
+// let menuItems = [
+//   'Students',
+//   'Faculty',
+//   "What's New",
+//   'Tech Trends',
+//   'Music',
+//   'Log Out'
+// ];
 
-/* 
-  Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
+// /* 
+//   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
-  <div class="menu">
-    <ul>
-      {each menu item as an <li>}
-    </ul>
-  </div>
+//   <div class="menu">
+//     <ul>
+//       {each menu item as an <li>}
+//     </ul>
+//   </div>
 
-  The 'menuMaker' takes an array of menu items as its only argument.
-*/
+//   The 'menuMaker' takes an array of menu items as its only argument.
+// */
 
-function menuMaker(menuItems){
-  const menu = document.createElement('div.menu');
-  const ul = document.createElement('ul');
-  const students = document.createElement('Students');
-  const faculty = document.createElement('Faculty');
-  const whatsnew = document.createElement('Whats New');
-  const techtrends = document.createElement('Tech Trends');
-  const music = document.createElement('Music');
-  const logout = document.createElement('Log Out');
+// const menuButton = document.querySelector('.menu-button');
+// const header = document.querySelector('.header');
+// const menu = document.querySelector('div');
+// header.appendChild(menu);
+// menu.classList.add('menu');
+// const list = document.querySelector('ul');
 
-/*
-  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
-  Add those items to the <ul>
-*/
+// function menuMaker(menuText){
 
-  menu.appendChild(ul);
-  ul.appendChild(students);
-  students.appendChild(faculty);
-  faculty.appendChild(whatsnew);
-  whatsnew.appendChild(techtrends);
-  techtrends.appendChild(music);
-  music.appendChild(logout);
+//   const menuItem = document.createElement('li');
+// /*
+//   Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
+//   Add those items to the <ul>
+// */
 
-/*
-  Step 3: Still inside your function, select from the DOM the menu button (the element with a class of 'menu-button').
-*/
-  const menuButton = document.createElement('.menu-button')
-  menuButton.classList.add('menu-button');
+//   list.appendChild(menuItem);
 
-/*
-  Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
-*/
+//   menuItem.textContent = menuText;
 
-  menuButton.addEventListener('click', event => {
-    menuButton.classList.toggle('menu--open');
-  })
+//   return menuItem;
+// }
 
-/*
-  Step 5: Don't forget to return your div.menu.
-*/
+// /*
+//   Step 3: Still inside your function, select from the DOM the menu button (the element with a class of 'menu-button').
+// */
 
-return menu;
-}
+//   menuButton.classList.add('menu-button');
 
-/*
-  Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
-*/
+// /*
+//   Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
+// */
 
+//   menuButton.addEventListener('click', event => {
+//     menuButton.classList.toggle('menu--open');
+//   })
 
+// /*
+//   Step 5: Don't forget to return your div.menu.
+// */
+
+// /* MOVED UP*/
+
+// /*
+//   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
+// */
+
+// const newMenuItems = menuItems.map(item => {
+//   return menuMaker(item);
+// })
+
+// newMenuItems.forEach(item => {
+//   list.appendChild(item);
+// })

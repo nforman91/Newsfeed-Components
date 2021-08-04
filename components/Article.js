@@ -119,18 +119,19 @@ function articleMaker(obj){
     div.appendChild(p2);
     div.appendChild(p3);
     div.appendChild(p4);
+    div.appendChild(button);
+    div.appendChild(expandButton);
 
-    div.classList.add('header');
+    div.classList.add('header', 'close');
     p1.classList.add('date');
     button.classList.add('expandButton');
-    div.classList.add('close');
 
     h2.textContent = obj.title;
     p1.textContent = obj.date;
     p2.textContent = obj.firstParagraph;
     p3.textContent = obj.secondParagraph;
     p4.textContent = obj.thirdParagraph;
-    span.textContent = '+';
+    button.textContent = '+';
 
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.

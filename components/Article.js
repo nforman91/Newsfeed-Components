@@ -119,7 +119,6 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 */
-
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
@@ -177,9 +176,6 @@ function articleMaker(obj){
 const articleElements = data.map(item => {
   return articleMaker(item);
 })
-// const panelElements = panelData.map(panelData => {
-//   return makePanel(panelData)
-// })
 
 const articleWrapper = document.querySelector('.articles');
 // adding each index of the array to the header

@@ -86,6 +86,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'I H8 DOM',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -104,17 +120,31 @@ const data = [
   </div>
 */
 
+/*
+  Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
+  This listener should toggle the class 'article-open' on div.article.
+*/
+/*
+  Step 3: Don't forget to return something from your function!
+*/
+/*
+  Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
+  to create a div.article element and append it to the DOM inside div.articles (see index.html).
+*/
+/*
+  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+  Refresh the page to see the new article.
+*/
 function articleMaker(obj){
   // create elements
     const div = document.createElement('div');
     const h2 = document.createElement('h2');
-    const p1 = document.createElement('p1');
-    const p2 = document.createElement('p2');
-    const p3 = document.createElement('p3');
-    const p4 = document.createElement('p4');
-    const button = document.createElement('span');
-    const expandButton = document.createElement('.expandButton');
-
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const p3 = document.createElement('p');
+    const p4 = document.createElement('p');
+    const expandButton = document.createElement('span');
+    
   // format elements
     document.body.appendChild(div);
     div.appendChild(h2);
@@ -122,13 +152,12 @@ function articleMaker(obj){
     div.appendChild(p2);
     div.appendChild(p3);
     div.appendChild(p4);
-    div.appendChild(button);
     div.appendChild(expandButton);
 
   // assign class names
-    div.classList.add('header', 'close');
+    div.classList.add('article');
     p1.classList.add('date');
-    button.classList.add('expandButton');
+    expandButton.classList.add('expandButton');
 
   // put text inside
     h2.textContent = obj.title;
@@ -136,29 +165,14 @@ function articleMaker(obj){
     p2.textContent = obj.firstParagraph;
     p3.textContent = obj.secondParagraph;
     p4.textContent = obj.thirdParagraph;
-    button.textContent = '+';
+    expandButton.textContent = '+';
 
-/*
-  Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-  This listener should toggle the class 'article-open' on div.article.
-*/
-
-  button.addEventListener('click', event => {
-      expandButton.classList.toggle('article-open');
+  expandButton.addEventListener('click', event => {
+      div.classList.toggle('article-open');
   })
-
-/*
-  Step 3: Don't forget to return something from your function!
-*/
 
   return div;
 }
-
-/*
-  Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
-  to create a div.article element and append it to the DOM inside div.articles (see index.html).
-*/
-
 // create array of article divs
 const articleElements = data.map(item => {
   return articleMaker(item);
@@ -169,13 +183,6 @@ const articleElements = data.map(item => {
 
 const articleWrapper = document.querySelector('.articles');
 // adding each index of the array to the header
-articleElements = data.forEach(div => {
+articleElements.forEach(div => {
   articleWrapper.appendChild(div);
 })
-
-/*
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  Refresh the page to see the new article.
-*/
-
-// const newArticle.map()

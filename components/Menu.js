@@ -21,44 +21,16 @@ let menuItems = [
   The 'menuMaker' takes an array of menu items as its only argument.
 */
 
-const menuButton = document.querySelector('.menu-button');
-const header = document.querySelector('.header');
-const menu = document.createElement('div');
-const list = document.createElement('ul');
-header.appendChild(menu);
-menu.appendChild(list);
-menu.classList.add('menu');
-
-function menuMaker(menuText){
-
 /*
   Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
   Add those items to the <ul>
 */
-
-  const menuItem = document.createElement('li');
-  menu.appendChild(list);
-  list.appendChild(menuItem);
-
-  menuItem.textContent = menuText;
-
-  return menuItem;
-}
-
 /*
   Step 3: Still inside your function, select from the DOM the menu button (the element with a class of 'menu-button').
 */
-
-  menuButton.classList.add('menu-button');
-
 /*
   Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
 */
-
-  menuButton.addEventListener('click', event => {
-    menuButton.classList.toggle('menu--open');
-  })
-
 /*
   Step 5: Don't forget to return your div.menu.
 */
@@ -69,11 +41,32 @@ function menuMaker(menuText){
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
 
-const newMenuItems = menuItems.map(item => {
-  return menuMaker(item);
-})
+function menuMaker(menuText) {
+const menuButton = document.querySelector('.menu-button');
+const header = document.querySelector('.header');
+const menu = document.createElement('div');
+const list = document.createElement('ul');
+header.appendChild(menu);
+menu.appendChild(list);
+menu.classList.add('menu');
 
-newMenuItems.forEach(item => {
-  const newItem = menuMaker(items);
-  list.appendChild(newItem);
-})
+  menuButton.addEventListener('click', event => {
+    menu.classList.toggle('menu--open');
+  })
+
+  menuText.forEach(item => {
+    const menuItem = document.createElement('li');
+    menuItem.textContent = item;
+    list.appendChild(menuItem);
+  })
+
+  return menu;
+}
+
+menuMaker(menuItems);
+
+// const newMenuItems = menuItems.map(item => {
+//   return menuMaker(item);
+// })
+
+

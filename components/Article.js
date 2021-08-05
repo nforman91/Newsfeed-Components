@@ -105,6 +105,7 @@ const data = [
 */
 
 function articleMaker(obj){
+  // create elements
     const div = document.createElement('div');
     const h2 = document.createElement('h2');
     const p1 = document.createElement('p1');
@@ -114,6 +115,8 @@ function articleMaker(obj){
     const button = document.createElement('span');
     const expandButton = document.createElement('.expandButton');
 
+  // format elements
+    document.body.appendChild(div);
     div.appendChild(h2);
     div.appendChild(p1);
     div.appendChild(p2);
@@ -122,10 +125,12 @@ function articleMaker(obj){
     div.appendChild(button);
     div.appendChild(expandButton);
 
+  // assign class names
     div.classList.add('header', 'close');
     p1.classList.add('date');
     button.classList.add('expandButton');
 
+  // put text inside
     h2.textContent = obj.title;
     p1.textContent = obj.date;
     p2.textContent = obj.firstParagraph;
@@ -154,17 +159,16 @@ function articleMaker(obj){
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 */
 
-const articleElements = data.map(div => {
-  return articleMaker(data);
+// create array of article divs
+const articleElements = data.map(item => {
+  return articleMaker(item);
 })
 // const panelElements = panelData.map(panelData => {
 //   return makePanel(panelData)
 // })
 
-// panelElements.forEach(panelElement => {
-//   accordion.appendChild(panelElement)
-// })
 const articleWrapper = document.querySelector('.articles');
+// adding each index of the array to the header
 articleElements = data.forEach(div => {
   articleWrapper.appendChild(div);
 })
